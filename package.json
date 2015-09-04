@@ -1,0 +1,62 @@
+{
+	"name": "grunt-datadriver",
+	"description": "grunt-datadriver is a grunt plugin to run selenium tests with Mocha and WebdriverIO",
+	"version": "0.6.0",
+	"homepage": "https://github.com/zdfs/grunt-datadriver",
+	"author": {
+		"name": "Christian Bromann",
+		"email": "contact@christian-bromann.com",
+		"url": "http://www.christian-bromann.com"
+	},
+	"contributors": [
+		{
+			"name": "Zachary Forrest y Salazar",
+			"email": "zforrest@gmail.com",
+			"url": "http://zdfs.com"
+		}
+	],
+	"repository": {
+		"type": "git",
+		"url": "git://github.com/zdfs/grunt-datadriver.git"
+	},
+	"bugs": {
+		"url": "https://github.com/zdfs/grunt-datadriver/issues"
+	},
+	"license": "MIT",
+	"main": "Gruntfile.js",
+	"engines": {
+		"node": ">= 0.12.0"
+	},
+	"scripts": {
+		"test": "grunt test --debug"
+	},
+	"dependencies": {
+		"async": "1.4.2",
+		"mocha": "2.3.0",
+		"webdriverio": "3.2.1",
+		"saucelabs": "^0.1.1",
+		"sauce-tunnel": "^2.2.3",
+		"selenium-standalone": "4.6.0",
+		"deepmerge": "^0.2.10",
+		"hooker": "^0.2.3",
+		"fs-extra": "^0.8.1"
+	},
+	"devDependencies": {
+		"grunt-contrib-jshint": "^0.11.3",
+		"grunt": "^0.4.5"
+	},
+	"peerDependencies": {
+		"grunt": "~0.4.5"
+	},
+	"keywords": [
+		"grunt",
+		"webdriverio",
+		"datadriver",
+		"selenium",
+		"mocha",
+		"bdd",
+		"tdd",
+		"saucelabs",
+		"gruntplugin"
+	]
+}
