@@ -1,6 +1,4 @@
-# grunt-webdriver [![Build Status](https://travis-ci.org/webdriverio/grunt-webdriver.png)](https://travis-ci.org/webdriverio/grunt-webdriver) [![Join the chat at https://gitter.im/webdriverio/grunt-webdriver](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/webdriverio/grunt-webdriver?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-
-> grunt-webdriver is a grunt plugin to run selenium tests with Mocha and [WebdriverIO](http://webdriver.io)
+> grunt-datadriver is a grunt plugin to run selenium tests with Mocha and [WebdriverIO](http://webdriver.io)
 
 ## Getting Started
 This plugin requires Grunt `~0.4.0`
@@ -12,27 +10,27 @@ install and use Grunt plugins. Once you're familiar with that process, you may
 install this plugin with this command:
 
 ```shell
-npm install grunt-webdriver --save-dev
+npm install grunt-datadriver --save-dev
 ```
 
 One the plugin has been installed, it may be enabled inside your Gruntfile
 with this line of JavaScript:
 
 ```js
-grunt.loadNpmTasks('grunt-webdriver');
+grunt.loadNpmTasks('grunt-datadriver');
 ```
 
-## The "webdriver" task
+## The "datadriver" task
 
 ### Overview
-In your project's Gruntfile, add a section named `webdriver` to the data
+In your project's Gruntfile, add a section named `datadriver` to the data
 object passed into `grunt.initConfig()`.
 
-_Run this task with the `grunt webdriver` command._
+_Run this task with the `grunt datadriver` command._
 
 ```js
 grunt.initConfig({
-  webdriver: {
+  datadriver: {
     options: {
         desiredCapabilities: {
             browserName: 'chrome'
@@ -61,7 +59,7 @@ To use a cloud service like [Sauce Labs](https://saucelabs.com) make sure you de
 
 ```js
 grunt.initConfig({
-  webdriver: {
+  datadriver: {
     options: {
         host: 'ondemand.saucelabs.com',
         port: 80,
@@ -91,7 +89,7 @@ will automatically try to establish a tunnel connection via [Sauce Connect](http
 
 ```js
 grunt.initConfig({
-  webdriver: {
+  datadriver: {
     options: {
         user: SAUCE_USERNAME,
         key: SAUCE_ACCESS_KEY,
@@ -194,114 +192,3 @@ Type: `Object`<br>
 Default: `{}`
 
 Options for installing Selenium dependencies. For more information check out the [selenium-standalone](https://github.com/vvo/selenium-standalone#seleniuminstallopts-cb) project.
-
-### Usage Examples
-
-#### Required Options
-In this example, the minimum required options are used to execute a simple
-test script.
-
-```js
-grunt.initConfig({
-  webdriver: {
-    githubTest: {
-      tests: './test/github-test.js'
-    }
-  },
-})
-```
-
-The corresponding *Hello World* test script is using WebdriverIO API to search the
-grunt-webdriver repository on GitHub. The global `browser` variable lets you access
-your client instance. See more functions and test examples in the [WebdriverIO](https://github.com/webdriverio/webdriverio) repository.
-
-```js
-'use strict';
-
-var assert = require('assert');
-
-describe('grunt-webdriver test', function () {
-
-    it('checks if title contains the search query', function(done) {
-
-        browser
-            .url('http://github.com')
-            .setValue('#js-command-bar-field','grunt-webdriver')
-            .submitForm('.command-bar-form')
-            .getTitle(function(err,title) {
-                assert(title.indexOf('grunt-webdriver') !== -1);
-            })
-            .call(done);
-
-    });
-
-});
-```
-
-#### Using CoffeeScript
-
-If you like to write your tests in CoffeeScript just add the following on the top of your Gruntfile
-and you are set.
-
-```js
-require('coffee-script/register');
-
-module.exports = function(grunt) {
-    // Project configuration.
-    grunt.initConfig({
-        // ...
-    });
-}
-```
-
-#### Simulating the before/after hooks
-
-If you would like to run code before or after your tests (for example to configure assertion frameworks) you can specify a script that grunt will run before your test files, like so:
-
-```js
-tests: ['test/before.js', 'test/spec/**/*.js', 'test/after.js']
-```
-
-Your `before.js` file could contain something like this:
-
-```js
-describe('setup test suite', function() {
-    it('should setup the test', function() {
-        var chai = require('chai');
-        var chaiAsPromised = require('chai-as-promised');
-        chai.use(chaiAsPromised);
-        chai.should();
-        GLOBAL.assert = chai.assert;
-    });
-});
-```
-You will be able to see `assert` within all the following test files.
-
-## Contributing
-Please fork, add specs, and send pull requests! In lieu of a formal styleguide, take care to
-maintain the existing coding style.
-
-## Release History
-* 2013-03-13   v0.1.1   first working version, without special features
-* 2013-03-14   v0.1.2   bugfixing, enhanced task option, improved test case
-* 2013-03-15   v0.1.3   added support for phantomjs, implemented reporter option
-* 2013-03-16   v0.1.4   save result of busterjs reporters to a file, use travis for CI testing
-* 2013-03-16   v0.1.5   added support for setUp function
-* 2013-03-16   v0.1.6   fixed WebdriverJS version
-* 2014-02-01   v0.2.0   rewrote plugin, replaced BusterJS with Mocha
-* 2014-03-13   v0.3.0   support Sauce Connect
-* 2014-03-16   v0.3.1   start selenium server and Sauce Connect tunnel only once
-* 2014-03-22   v0.3.2   make task work with absolute minimum required options - closes [#11](https://github.com/webdriverio/grunt-webdriver/issues/11)
-* 2014-03-13   v0.3.3   updated version of WebdriverJS
-* 2014-03-13   v0.4.0   pipe reporter output into file, expose flag to prevent spawing of selenium process
-* 2014-05-23   v0.4.1   updated dependencies
-* 2014-08-17   v0.4.2   updated webdriverjs dependencies
-* 2014-08-17   v0.4.3   fixed broke v0.4.3 version
-* 2014-09-18   v0.4.4   selenium server outputs log on stderr, implemented workaround
-* 2014-11-27   v0.4.5   Updated WebdriverIO package version, smaller bugfixes regarding file output
-* 2014-11-27   v0.4.6   Additional bugfixes
-* 2014-11-27   v0.4.7   check isLastTask properly
-* 2014-11-27   v0.4.8   bugfix
-* 2015-04-22   v0.5.0   updated selenium-standalone dependency
-* 2015-04-26   v0.5.1   better handling of different environments - closes [webdriverio/webdriverio#506](https://github.com/webdriverio/webdriverio/issues/506)
-* 2015-06-04   v0.5.2   update selenium-standalone dependency
