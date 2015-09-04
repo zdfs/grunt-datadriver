@@ -20,7 +20,7 @@ var Mocha = require('mocha'),
 
 module.exports = function(grunt) {
 
-    grunt.registerMultiTask('webdriver', 'run WebdriverIO tests with Mocha', function() {
+    grunt.registerMultiTask('datadriver', 'run WebdriverIO tests with Mocha', function() {
 
         var done = this.async(),
             base = process.cwd(),

@@ -4,7 +4,7 @@ module.exports = function(grunt) {
     grunt.initConfig({
         
         // Configuration to be run (and then tested).
-        webdriver: {
+        datadriver: {
             options: {
                 updateSauceJob: true,
                 user: process.env.SAUCE_USERNAME,
@@ -57,9 +57,8 @@ module.exports = function(grunt) {
     grunt.loadTasks('tasks');
 
     // By default, lint and run all tests.
-    grunt.registerTask('default', ['jshint', 'webdriver']);
+    grunt.registerTask('default', ['jshint', 'datadriver']);
     // default task for testing
-    grunt.registerTask('test', ['webdriver:local']);
-    grunt.registerTask('testTravis', ['webdriver:chrome_ci' ,'webdriver:chrome_ciTunnel']);
+    grunt.registerTask('test', ['datadriver:local']);
 
 };
