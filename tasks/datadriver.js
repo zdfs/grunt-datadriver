@@ -11,12 +11,15 @@ var Mocha = require('mocha'),
     path = require('path'),
     fs = require('fs-extra'),
     deepmerge = require('deepmerge'),
+    datadriverReporter = require('../support/reporter'),
     server = null,
     isSeleniumServerRunning = false,
     tunnel = null,
     seleniumServer = null,
     isSauceTunnelRunning = false,
     isHookedUp = false;
+
+require('../support/ui');
 
 module.exports = function(grunt) {
 
@@ -25,8 +28,8 @@ module.exports = function(grunt) {
         var done = this.async(),
             base = process.cwd(),
             options = this.options({
-                reporter: 'spec',
-                ui: 'bdd',
+                reporter: datadriverReporter,
+                ui: 'ddui',
                 slow: 75,
                 bail: false,
                 grep: null,
